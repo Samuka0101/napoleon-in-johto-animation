@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Napoleão Bonaparte · O Imperador de Johto</title>
+<style>
+:root{--paper:#f4e5cf;--muted:#b6adad;--gold:#e0b680;--panel:#1b2030;--line:#b2a39735}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;background:radial-gradient(ellipse at 40% 30%,#283249 0,#141929 52%,#0b0e18 100%);color:var(--paper);font:14px system-ui,sans-serif;display:grid;align-items:center;justify-items:center}
+main{width:min(100%,850px);display:grid;grid-template-columns:min(53svh,440px) minmax(230px,310px);gap:clamp(18px,5vw,58px);align-items:center;justify-content:center;padding:18px}
+.stage{position:relative;width:100%;aspect-ratio:9/16;background:#232b43;border-radius:11px;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px #a9977a5b,0 20px 70px #050816b0}
+.stage svg{display:block;width:100%;height:100%}
+.stage::after{content:'';position:absolute;inset:0;z-index:2;background:#0c111d;opacity:var(--cut,0);pointer-events:none}
+.stage-label{position:absolute;top:5%;left:8%;right:8%;z-index:3;text-shadow:0 2px 12px #0b0f1b;pointer-events:none}
+#scene-act{display:block;color:#f0cc94;font-size:clamp(9px,1.3vw,11px);letter-spacing:.18em;text-transform:uppercase;font-weight:650}
+#scene-title{display:block;margin-top:.3em;color:#f8ebd8;font:600 clamp(16px,3.2vw,25px)/1.12 Georgia,serif}
+#caption{position:absolute;z-index:3;bottom:4.2%;left:8%;right:8%;margin:0;padding:.55em .65em;background:#0d1222df;color:#fff4de;font-size:clamp(13px,2vw,17px);line-height:1.38;font-weight:590;text-align:center;border-radius:5px;box-shadow:0 6px 17px #06081245;pointer-events:none}
+.move{position:absolute;z-index:3;left:9%;top:26%;max-width:82%;padding:.65em .85em;background:#101523da;border-left:2px solid var(--power,#f0cb95);color:var(--power,#f0cb95);text-shadow:0 0 13px currentColor;opacity:0;pointer-events:none}
+.move span{display:block;font-size:clamp(9px,1.3vw,11px);letter-spacing:.12em;text-transform:uppercase}
+.move strong{display:block;font:600 clamp(15px,2.8vw,23px)/1.2 Georgia,serif;margin-top:.14em}
+.cover{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:9%;background:linear-gradient(175deg,#12192c29,#101323b0 52%,#101323cb)}
+[hidden]{display:none!important}
+.cover .overline{color:#f1cd96;font-size:clamp(9px,2vw,12px);letter-spacing:.23em;font-weight:650;margin:0 0 12px}
+.cover h1{font:700 clamp(29px,5vw,46px)/1 Georgia,serif;margin:0 0 10px;letter-spacing:-.04em;text-shadow:0 5px 21px #111126}
+.cover h1 span{display:block;color:#f2c88d;font-size:.67em;margin-top:.32em;letter-spacing:-.025em}
+.cover button{margin-top:18px;background:#e4bd87;color:#211b22;font-weight:700;border-color:#f1c894;box-shadow:0 8px 20px #0a0c1d76}
+.cover button:hover{background:#f4d4a2}
+.panel{align-self:center;min-width:0}
+.panel h2{font:700 clamp(24px,4vw,33px)/1.06 Georgia,serif;margin:0 0 .4em;letter-spacing:-.03em}
+.panel h2 span{display:block;color:var(--gold);font-size:.84em;margin-top:.22em}
+.panel p{margin:.6em 0 1.4em;color:var(--muted)}
+button,select{font:inherit;color:var(--paper);border:1px solid var(--line);border-radius:7px;background:var(--panel);padding:.6em .75em}
+button{cursor:pointer}button:hover{border-color:#d2ac78;color:#f5d7af}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #f0bf80;outline-offset:3px}
+.playback{display:grid;grid-template-columns:43px minmax(0,1fr);gap:10px;align-items:center;margin:12px 0}
+#play{height:43px;color:#f0c888;font-size:16px}
+.timeline{display:grid;gap:4px;align-items:center}
+.time{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;justify-content:space-between}
+input[type=range]{width:100%;margin:0;accent-color:#e3b581;cursor:pointer}
+.chapter-control{display:grid;gap:6px;color:#d6c7b7;font-size:12px;margin-top:11px}
+select{width:100%;font-size:13px;text-overflow:ellipsis}
+.options{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;font-size:11px}
+button[aria-pressed=true]{background:#303044;color:#edd3ae}
+.volume{display:flex;align-items:center;gap:12px;color:#c7b8af;font-size:12px;max-width:225px}
+details{color:var(--muted);font-size:11px;margin-top:16px;line-height:1.55}
+summary{cursor:pointer}details p{margin:.55em 0!important}a{color:#f0c990}
+#voice-note{font-size:11px}
+@media(max-width:700px){body{display:block}main{grid-template-columns:minmax(0,420px);gap:12px;padding:10px 12px 18px}.stage{width:min(100%,51svh);justify-self:center}.panel h2,.panel .metadata{display:none}.panel{width:min(100%,420px);justify-self:center}.options{margin:9px 0}details{margin-top:10px}}
+@media(prefers-reduced-motion:reduce){.stage::after{opacity:0}}
+</style>
+</head>
+<body>
+<main>
+ <section class="stage paused" id="stage" aria-label="Animação de Napoleão em Johto">
+  <svg id="film" viewBox="0 0 360 640" aria-hidden="true">
+   <defs id="defs"></defs>
+   <rect width="360" height="640" fill="url(#sky)"/>
+   <g id="distance"></g><g id="middle"></g><g id="foreground"></g><g id="powers"></g><g id="air"></g>
+   <rect width="360" height="640" fill="url(#grain)" opacity=".54"/>
+   <rect width="360" height="640" fill="url(#edge)"/>
+   <rect x="12" y="12" width="336" height="616" rx="3" fill="none" stroke="#eacb9e" opacity=".27"/>
+  </svg>
+  <div class="stage-label"><span id="scene-act"></span><span id="scene-title"></span></div>
+  <div class="move" id="move" aria-hidden="true"><span id="move-owner"></span><strong id="move-name"></strong></div>
+  <p id="caption"></p>
+  <div class="cover" id="cover">
+   <p class="overline" id="cover-label">UMA HISTÓRIA ALTERNATIVA</p>
+   <h1>Napoleão Bonaparte<span>O Imperador de Johto</span></h1>
+   <button id="begin">▶ Assistir</button>
+  </div>
+ </section>
+ <section class="panel" aria-label="Controles de reprodução">
+  <h2>Napoleão Bonaparte<span>O Imperador de Johto</span></h2>
+  <p class="metadata">Animação vetorial · <span id="duration"></span></p>
+  <div class="playback">
+   <button id="play" aria-label="Reproduzir">▶</button>
+   <div class="timeline"><input id="seek" type="range" min="0" value="0" step=".05" aria-label="Posição da animação"><div class="time"><span id="now">0:00</span><span id="progress-total"></span></div></div>
+  </div>
+  <label class="chapter-control">Capítulos<select id="chapters"></select></label>
+  <div class="options">
+   <button id="voice" aria-pressed="true">Voz ligada</button>
+   <button id="ambience" aria-pressed="true">Som ligado</button>
+   <button id="subtitles" aria-pressed="true">Legendas</button>
+  </div>
+  <label class="volume">Volume <input id="volume" type="range" min="0" max="1" value=".8" step=".05"></label>
+  <p id="voice-note" hidden>Ative uma voz em português no navegador para ouvir a locução.</p>
+  <details>
+   <summary>Referências da adaptação</summary>
+   <p>As leituras ENTJ da <a href="https://wiki.personality-database.com/books/jungian-derivatives/page/entj" target="_blank" rel="noopener">Personality Database</a> e do <a href="https://boo.world/database/profile/995854/napoleon-bonaparte-personality-type" target="_blank" rel="noopener">Boo</a> serviram como referência de caracterização. As cenas e os diálogos são ficcionais.</p>
+   <p>A carta a Josefina e o hábito do rapé foram inspirados na <a href="https://kalliope-verbund.info/DE-611-HS-3085389" target="_blank" rel="noopener">correspondência de 1806</a> e nas <a href="https://upload.wikimedia.org/wikipedia/commons/3/3c/Memoirs_of_Napoleon_Bonaparte_from_the_French_of_F._de_Bourrienne_%28IA_memoirsnapoleonb00bouriala%29.pdf" target="_blank" rel="noopener">memórias de Bourrienne</a>. O percurso de treinador parte das referências oficiais de <a href="https://www.pokemon.com/uk/features/a-visitors-guide-to-johto" target="_blank" rel="noopener">Pokémon em Johto</a>.</p>
+  </details>
+ </section>
+</main>
+<script>
+/* EMBEDDED_EPISODE */
+</script>
+</body>
+</html>
